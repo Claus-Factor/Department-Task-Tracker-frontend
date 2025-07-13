@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Система учета поручений</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="icon" href="static/img/logo.png" type="image/x-icon">
+    <link rel="shortcut icon" href="static/img/logo.png" type="image/x-icon">
+</head>
+<body>
+    <header>
+        <div style="display: flex; align-items: center; gap: 15px;">
+            <img src="static/img/logo.png" style="height: 50px; width: auto;">
+            <h1>Управление отделами</h1>
+        </div>
+        <div id="user-menu">
+            <a id="username-display" href="profile.html"></a>
+            <button id="logout-btn">Выйти</button>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="controls">
+            <button id="add-department-btn">
+                <i class="fas fa-plus"></i> Добавить отдел
+            </button>
+            <div class="search-box">
+                <input type="text" id="search-input" placeholder="Поиск по названию" hidden>
+            </div>
+        </div>
+
+        <table id="departments-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Название</th>
+                    <th>Руководитель</th>
+                    <th>Количество сотрудников</th>
+                    <th>Дата создания</th>
+                    <th>Действия</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+
+        <div class="pagination">
+            <button id="prev-page"><i class="fas fa-chevron-left"></i></button>
+            <span id="page-info">Страница 1</span>
+            <button id="next-page"><i class="fas fa-chevron-right"></i></button>
+        </div>
+    </main>
+
+    <!-- Модальное окно для добавления отдела -->
+    <div id="department-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 id="modal-title">Добавить отдел</h2>
+            <form id="department-form">
+                <input type="hidden" id="department-id">
+                <div class="form-group">
+                    <label for="department-name">Название отдела*</label>
+                    <input type="text" id="department-name" required minlength="5">
+                </div>
+                <div class="form-group">
+                <label for="department-description">Описание отдела</label>
+                <textarea id="department-description" rows="3"></textarea>
+            </div>
+                <button type="submit" class="save-btn">Сохранить</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/departments.js"></script>
+</body>
+</html>

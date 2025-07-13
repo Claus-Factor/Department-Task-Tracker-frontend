@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Система учёта поручений</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="icon" href="static/img/logo.png" type="image/x-icon">
+    <link rel="shortcut icon" href="static/img/logo.png" type="image/x-icon">
+</head>
+<body>
+    <header>
+        <div style="display: flex; align-items: center; gap: 15px;">
+            <img src="static/img/logo.png" style="height: 50px; width: auto;">
+            <h1>Управление поручениями</h1>
+        </div>
+        <div id="user-menu">
+            <a id="username-display" href="profile.html"></a>
+            <button id="logout-btn">Выйти</button>
+        </div>
+    </header>
+    <main>
+        <div class="controls">
+            <button id="add-task-btn">Создать задачу</button>
+            <div class="filters">
+                <select id="status-filter">
+                    <option value="">Все статусы</option>
+                    <option value="NEW">Новая</option>
+                    <option value="IN_PROGRESS">В работе</option>
+                    <option value="COMPLETED">Завершена</option>
+                    <option value="CANCELLED">Отменена</option>
+                </select>
+                <select id="priority-filter">
+                    <option value="">Все приоритеты</option>
+                    <option value="LOW">Низкий</option>
+                    <option value="MEDIUM">Средний</option>
+                    <option value="HIGH">Высокий</option>
+                </select>
+                <input type="text" id="search-input" placeholder="Поиск по названию">
+            </div>
+        </div>
+        
+        <table id="tasks-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Название</th>
+                    <th>Статус</th>
+                    <th>Приоритет</th>
+                    <th>Исполнитель</th>
+                    <th>Дедлайн</th>
+                    <th>Действия</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+        
+        <div class="pagination">
+            <button id="prev-page"><i class="fas fa-chevron-left"></i></button>
+            <span id="page-info">Страница 1</span>
+            <button id="next-page"><i class="fas fa-chevron-right"></i></button>
+        </div>
+    </main>
+    
+    <!-- Модальное окно для создания/редактирования задачи -->
+    <div id="task-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 id="modal-title">Создать задачу</h2>
+            <form id="task-form">
+                <input type="hidden" id="task-id">
+                <div class="form-group">
+                    <label for="task-title">Название:</label>
+                    <input type="text" id="task-title" required>
+                </div>
+                <div class="form-group">
+                    <label for="task-description">Описание:</label>
+                    <textarea id="task-description" rows="4"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="task-priority">Приоритет:</label>
+                    <select id="task-priority" required>
+                        <option value="LOW">Низкий</option>
+                        <option value="MEDIUM">Средний</option>
+                        <option value="HIGH">Высокий</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="task-deadline">Дедлайн:</label>
+                    <input type="datetime-local" id="task-deadline">
+                </div>
+                <div class="form-group">
+                    <label for="task-assignee">Исполнитель:</label>
+                    <select id="task-assignee" required></select>
+                </div>
+                <button type="submit">Сохранить</button>
+            </form>
+        </div>
+    </div>
+    
+    <!-- Модальное окно для просмотра задачи -->
+    <div id="view-task-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 id="view-task-title"></h2>
+            <div class="task-details">
+                <p><strong>Статус:</strong> <span id="view-task-status"></span></p>
+                <p><strong>Приоритет:</strong> <span id="view-task-priority"></span></p>
+                <p><strong>Исполнитель:</strong> <span id="view-task-assignee"></span></p>
+                <p><strong>Автор:</strong> <span id="view-task-author"></span></p>
+                <p><strong>Дата поручения:</strong> <span id="view-task-created-at"></span></p>
+                <p><strong>Описание:</strong></p>
+                <div id="view-task-description"></div>
+            </div>
+            
+            <div class="comments-section">
+                <h3>Комментарии</h3>
+                <div id="comments-list"></div>
+                <form id="add-comment-form">
+                    <input type="hidden" id="comment-task-id">
+                    <div class="form-group">
+                        <label for="comment-text">Новый комментарий:</label>
+                        <textarea id="comment-text" rows="3" required></textarea>
+                    </div>
+                    <button type="submit">Добавить</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <script src="js/tasks.js">
+    </script>
+</body>
+</html>

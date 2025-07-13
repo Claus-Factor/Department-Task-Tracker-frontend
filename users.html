@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Система учёта поручений</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="icon" href="static/img/logo.png" type="image/x-icon">
+    <link rel="shortcut icon" href="static/img/logo.png" type="image/x-icon">
+</head>
+<body>
+    <header>
+        <div style="display: flex; align-items: center; gap: 15px;">
+            <img src="static/img/logo.png" style="height: 50px; width: auto;">
+            <h1>Управление сотрудниками</h1>
+        </div>
+        <div id="user-menu">
+            <a id="username-display" href="profile.html"></a>
+            <button id="logout-btn">Выйти</button>
+        </div>
+    </header>
+    <main>
+        <div class="controls" style = "justify-content: start; gap: 10px; width: 30%;">
+            <select id="department-filter">
+            </select>
+            <select id="role-filter">
+                <option value="ROLE_EMPLOYEE">Сотрудники</option>
+                <option value="ROLE_MANAGER">Менеджеры</option>
+            </select>
+        </div>
+        
+        <table id="users-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Логин пользователя</th>
+                    <th>ФИО</th>
+                    <th>Роль</th>
+                    <th>Отдел</th>
+                    <th id="action-th">Действия</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+        
+        <div class="pagination">
+            <button id="prev-page"><i class="fas fa-chevron-left"></i></button>
+            <span id="page-info">Страница 1</span>
+            <button id="next-page"><i class="fas fa-chevron-right"></i></button>
+        </div>
+    </main>
+    
+    <!-- Модальное окно для редактирования пользователя -->
+    <div id="user-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 id="modal-title"></h2>
+            <form id="user-form">
+                <input type="hidden" id="user-id">
+                <div class="form-group">
+                    <label for="modal-role">Роль:</label>
+                    <select id="modal-role">
+                        <option value="ROLE_EMPLOYEE">Сотрудник</option>
+                        <option value="ROLE_MANAGER">Менеджер</option>
+                        <option value="ROLE_ADMIN">Администратор</option>
+                    </select>
+                </div>
+                <button type="submit">Сохранить</button>
+            </form>
+        </div>
+    </div>
+    
+    <script src="js/users.js">
+    </script>
+</body>
+</html>

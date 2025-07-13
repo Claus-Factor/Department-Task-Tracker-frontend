@@ -1,0 +1,509 @@
+/* Общие стили */
+:root {
+  --primary-color: #2c3e50;
+  --secondary-color: #3498db;
+  --text-color: #333;
+  --light-bg: #f9f9f9;
+  --white: #fff;
+  --error-color: #e74c3c;
+  --success-color: #2ecc71;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  color: var(--text-color);
+  background-color: var(--light-bg);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Шапка */
+header {
+  background-color: var(--primary-color);
+  color: var(--white);
+  padding: 1rem;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+header h1 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+/* Контейнеры кнопок */
+#auth-buttons, #user-menu {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+/* Кнопки */
+button {
+  background-color: var(--secondary-color);
+  color: var(--white);
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #2980b9;
+}
+
+#logout-btn {
+  background-color: var(--error-color);
+}
+
+#logout-btn:hover {
+  background-color: #c0392b;
+}
+
+/* Основное содержимое */
+main {
+  flex: 1;
+  padding: 2rem 1rem;
+}
+
+.welcome-section {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 2rem;
+  background-color: var(--white);
+  border-radius: 8px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+.welcome-section h2 {
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+/* Адаптивность */
+@media (min-width: 768px) {
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+  }
+
+  header h1 {
+    margin-bottom: 0;
+    text-align: left;
+  }
+
+  #auth-buttons, #user-menu {
+    margin-top: 0;
+  }
+
+  #user-menu a {
+    color: #FFFFFF;
+    text-decoration: none;
+  }
+
+  .welcome-section {
+    padding: 3rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .welcome-section {
+    padding: 4rem;
+  }
+}
+
+/* Мобильные устройства */
+@media (max-width: 480px) {
+  button {
+    padding: 0.5rem;
+    font-size: 0.9rem;
+  }
+
+  .welcome-section {
+    padding: 1.5rem;
+  }
+}
+
+/* Анимации */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.welcome-section {
+  animation: fadeIn 0.5s ease-in;
+}
+
+/* Состояние кнопок */
+button:disabled {
+  background-color: #95a5a6;
+  cursor: not-allowed;
+}
+
+/* Имя пользователя */
+#username-display {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background-color: rgba(255,255,255,0.1);
+  border-radius: 4px;
+  margin-right: 0.5rem;
+}
+
+/* Стили для форм */
+.auth-container {
+    width: 400px;
+    margin: 0 auto;
+    padding: 2rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.form-group input, select {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+/* Стили для таблицы */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+}
+
+th, td {
+    padding: 0.75rem;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+tr:hover {
+    background-color: #f5f5f5;
+}
+
+/* Модальное окно */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto ;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 5px;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover {
+    color: black;
+}
+
+/* Пагинация */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem 0;
+}
+
+.pagination button {
+    margin: 0 0.5rem;
+}
+
+/* Контролы */
+.controls {
+    display: flex;
+    justify-content: space-between;
+    margin: 1rem 0;
+}
+
+.controls select {
+    padding: 0.5rem;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+}
+
+.welcome-section {
+    padding-inline: 10px;
+}
+
+/* Дополнения к существующим стилям */
+
+/* Бейджи статусов */
+.status-badge {
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.status-badge.new {
+    background-color: #3498db;
+    color: white;
+}
+
+.status-badge.in_progress {
+    background-color: #f39c12;
+    color: white;
+}
+
+.status-badge.completed {
+    background-color: #2ecc71;
+    color: white;
+}
+
+.status-badge.cancelled {
+    background-color: #e9243e;
+    color: white;
+}
+
+/* Бейджи приоритетов */
+.priority-badge {
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.priority-badge.low {
+    background-color: #2ecc71;
+    color: white;
+}
+
+.priority-badge.medium {
+    background-color: #f39c12;
+    color: white;
+}
+
+.priority-badge.high {
+    background-color: #e74c3c;
+    color: white;
+}
+
+/* Детали задачи */
+.task-details {
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    background-color: #f9f9f9;
+    border-radius: 4px;
+}
+
+.task-details p {
+    margin: 0.5rem 0;
+}
+
+/* Комментарии */
+.comments-section {
+    margin-top: 1.5rem;
+}
+
+.comment {
+    padding: 1rem;
+    margin-bottom: 1rem;
+    background-color: #f5f5f5;
+    border-radius: 4px;
+    border-left: 3px solid #3498db;
+}
+
+.comment-author {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.comment-date {
+    font-size: 0.8rem;
+    color: #777;
+    margin-bottom: 0.5rem;
+}
+
+.comment-text {
+    white-space: pre-wrap;
+}
+
+/* Фильтры */
+.filters {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.filters select, .filters input {
+    padding: 0.5rem;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+}
+
+/* Стили профиля */
+.profile-container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.profile-info {
+    margin-bottom: 2rem;
+}
+
+.info-card {
+    background: var(--white);
+    border-radius: 8px;
+    padding: 1rem 2rem;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+    text-align: center;
+}
+
+.info-card h2 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.info-card p {
+    margin: 0.5rem 0;
+    font-size: 1.1rem;
+}
+
+.actions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.action-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    background: var(--white);
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+    min-height: 150px;
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--text-color);
+    font-weight: 600;
+}
+
+.action-btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 10px rgba(0,0,0,0.4);
+}
+
+.action-btn img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 1rem;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .actions-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .action-btn {
+        padding: 1.5rem;
+        min-height: 120px;
+    }
+}
+
+@media (max-width: 480px) {
+    .info-card {
+        padding: 1.5rem;
+    }
+}
+
+textarea {
+    width: 100%;
+    height: 100px;
+}
+
+.actions-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+}
+        
+.main-actions {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+}
+        
+.admin-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+.department-name {
+    position: relative;
+    cursor: help;
+}
+
+.department-name:hover::after {
+    content: attr(data-description);
+    position: absolute;
+    left: 0;
+    top: 100%;
+    z-index: 100;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 8px 12px;
+    width: 300px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    font-size: 14px;
+    font-weight: normal;
+    white-space: normal;
+}

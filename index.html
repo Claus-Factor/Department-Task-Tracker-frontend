@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Система учёта поручений</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="static/img/logo.png" type="image/x-icon">
+    <link rel="shortcut icon" href="static/img/logo.png" type="image/x-icon">
+</head>
+<body>
+    <header>
+        <div style="display: flex; align-items: center; gap: 15px;">
+            <img src="static/img/logo.png" style="height: 50px; width: auto;">
+            <h1>Система учета поручений</h1>
+        </div>
+        <div id="auth-buttons">
+            <button onclick="location.href='auth.html'">Войти</button>
+            <button onclick="location.href='register.html'">Регистрация</button>
+        </div>
+        <div id="user-menu" style="display: none;">
+            <a id="username-display" href="profile.html"></a>
+            <button id="logout-btn">Выйти</button>
+        </div>
+    </header>
+    <main>
+        <section class="welcome-section">
+            <h2>Добро пожаловать в систему учета задач</h2>
+            <p id="message-for-guest">Пожалуйста, войдите в систему для начала работы</p>
+            <p id="message-for-user" style="display: none;">Перейдите в профиль для продолжения работы</p>
+        </section>
+
+    </main>
+    <script src="js/welcome.js">
+    </script>
+</body>
+</html>
