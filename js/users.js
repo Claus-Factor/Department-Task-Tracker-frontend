@@ -90,8 +90,9 @@ async function renderUsersTable(users) {
         <td>${user.id}</td>
         <td>${user.username}</td>
         <td>${user.fullName}</td>
-        <td>${userRole}</td>
-        <td>${user.departmentName}</td>
+        <td>${user.email}</td>
+        <td class="for-hide">${userRole}</td>
+        <td class="for-hide">${user.departmentName}</td>
     `;
     if (currentUser.role == "ROLE_ADMIN") {
         tr.innerHTML += `

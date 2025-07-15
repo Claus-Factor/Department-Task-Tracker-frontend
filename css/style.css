@@ -313,6 +313,12 @@ tr:hover {
   }
 }
 
+@media (max-width: 941px) {
+  #users-table th.for-hide, #users-table td.for-hide {
+    display: none;
+  }
+}
+
 /* Модальное окно */
 .modal {
     display: none;
