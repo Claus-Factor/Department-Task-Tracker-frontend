@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 async function loadUserInfo() {
     try {
         const user = await fetchWithAuth('/api/users/me');
-        document.getElementById('username-display').textContent = user.fullName;
+        document.getElementById('username-display').textContent = user.username;
 
         if (user.role === 'ROLE_MANAGER') {
             document.querySelector('#department-filter').style.display = 'none';
@@ -96,7 +96,7 @@ async function renderUsersTable(users) {
     if (currentUser.role == "ROLE_ADMIN") {
         tr.innerHTML += `
         <td>
-            <button class="edit-btn" data-id="${user.id}">Роль</button>
+            <button class="edit-btn" data-id="${user.id}"><i class="fas fa-user-shield"></i></button>
             <button class="delete-btn" data-id="${user.id}"><i class="fas fa-trash"></i></button>
         </td>
         `;

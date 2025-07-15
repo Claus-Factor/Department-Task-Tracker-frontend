@@ -11,23 +11,27 @@
 </head>
 <body>
     <header>
-        <div style="display: flex; align-items: center; gap: 15px;">
-            <img src="static/img/logo.png" style="height: 50px; width: auto;">
-            <h1>Управление сотрудниками</h1>
-        </div>
+        <a href="index.html" class="app-link">
+            <div class="app-title">
+                <img src="static/img/logo.png" style="height: 50px; width: auto;">
+                <h1>Управление сотрудниками</h1>
+            </div>
+        </a>
         <div id="user-menu">
             <a id="username-display" href="profile.html"></a>
             <button id="logout-btn">Выйти</button>
         </div>
     </header>
     <main>
-        <div class="controls" style = "justify-content: start; gap: 10px; width: 30%;">
-            <select id="department-filter">
-            </select>
-            <select id="role-filter">
-                <option value="ROLE_EMPLOYEE">Сотрудники</option>
-                <option value="ROLE_MANAGER">Менеджеры</option>
-            </select>
+        <div class="controls">
+            <div class="filters">
+                <select id="department-filter">
+                </select>
+                <select id="role-filter">
+                    <option value="ROLE_EMPLOYEE">Сотрудники</option>
+                    <option value="ROLE_MANAGER">Менеджеры</option>
+                </select>
+            </div>
         </div>
         
         <table id="users-table">

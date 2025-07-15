@@ -39,10 +39,29 @@ header h1 {
   text-align: center;
 }
 
+.app-title {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.app-title h1 {
+  color: #FFFFFF;
+  text-decoration: none;
+}
+
+a:active, a {
+  text-decoration: none;
+}
+
+@media (max-width: ) {
+  
+}
+
 /* Контейнеры кнопок */
 #auth-buttons, #user-menu {
   display: flex;
-  justify-content: center;
+  justify-content: end;
   gap: 1rem;
   margin-top: 0.5rem;
 }
@@ -92,22 +111,16 @@ main {
   margin-bottom: 1rem;
 }
 
+header {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+}
+
 /* Адаптивность */
 @media (min-width: 768px) {
-  header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 2rem;
-  }
-
   header h1 {
-    margin-bottom: 0;
     text-align: left;
-  }
-
-  #auth-buttons, #user-menu {
-    margin-top: 0;
   }
 
   #user-menu a {
@@ -120,6 +133,12 @@ main {
   }
 }
 
+@media (max-width: 750px) {
+  .app-title h1 {
+    display: none;
+  }
+}
+
 @media (min-width: 1024px) {
   .welcome-section {
     padding: 4rem;
@@ -128,11 +147,6 @@ main {
 
 /* Мобильные устройства */
 @media (max-width: 480px) {
-  button {
-    padding: 0.5rem;
-    font-size: 0.9rem;
-  }
-
   .welcome-section {
     padding: 1.5rem;
   }
@@ -161,6 +175,8 @@ button:disabled {
   background-color: rgba(255,255,255,0.1);
   border-radius: 4px;
   margin-right: 0.5rem;
+  color: #FFFFFF;
+  text-decoration: none;
 }
 
 /* Стили для форм */
@@ -171,6 +187,12 @@ button:disabled {
     border: 1px solid #ddd;
     border-radius: 5px;
     box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+@media (max-width: 480px) {
+    .auth-container {
+      width: 85%;
+    }
 }
 
 .form-group {
@@ -208,6 +230,87 @@ th {
 
 tr:hover {
     background-color: #f5f5f5;
+}
+
+/* Преобразование в карточки на очень маленьких экранах */
+@media screen and (max-width: 680px) {
+    table, tbody, th, td, tr {
+        display: block;
+        width: 100%;
+    }
+    
+    thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+    
+    tr {
+        margin-bottom: 15px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        padding: 10px;
+    }
+    
+    td {
+        border: none;
+        border-bottom: 1px solid #eee;
+        position: relative;
+        padding-left: 50%;
+    }
+    
+    td:before {
+        position: absolute;
+        left: 10px;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+        font-weight: bold;
+    }
+  
+}
+
+@media screen and (max-width: 680px) {
+    #departments-table td:nth-of-type(1):before { content: "ID"; }
+    #departments-table td:nth-of-type(2):before { content: "Название"; }
+    #departments-table td:nth-of-type(3):before { content: "Руководитель"; }
+    #departments-table td:nth-of-type(4):before { content: "Сотрудников"; }
+    #departments-table td:nth-of-type(5):before { content: "Дата создания"; }
+    #departments-table td:nth-of-type(6):before { content: "Действия"; }
+}
+
+@media screen and (max-width: 680px) {
+    #users-table td:nth-of-type(1):before { content: "ID"; }
+    #users-table td:nth-of-type(2):before { content: "Логин"; }
+    #users-table td:nth-of-type(3):before { content: "ФИО"; }
+    #users-table td:nth-of-type(4):before { content: "Роль"; }
+    #users-table td:nth-of-type(5):before { content: "Отдел"; }
+    #users-table td:nth-of-type(6):before { content: "Действия"; }
+}
+
+@media screen and (max-width: 680px) {
+    #tasks-table td:nth-of-type(1):before { content: "ID"; }
+    #tasks-table td:nth-of-type(2):before { content: "Название"; }
+    #tasks-table td:nth-of-type(3):before { content: "Статус"; }
+    #tasks-table td:nth-of-type(4):before { content: "Приоритет"; }
+    #tasks-table td:nth-of-type(5):before { content: "Исполнитель"; }
+    #tasks-table td:nth-of-type(6):before { content: "Дедлайн"; }
+    #tasks-table td:nth-of-type(7):before { content: "Действия"; }
+}
+
+@media (min-width: 650px) {
+  th:last-child, td:last-child { /* Последний столбец (Действия) */
+    white-space: nowrap;
+    width: 100px;
+    text-align: center;
+  }
+}
+
+/* Прячем ячейки таблицы поручений при уменбьшении экрана */
+@media (max-width: 854px) {
+  th.for-hide, td.for-hide {
+    display: none;
+  }
 }
 
 /* Модальное окно */
@@ -262,6 +365,24 @@ tr:hover {
     display: flex;
     justify-content: space-between;
     margin: 1rem 0;
+}
+
+@media screen and (max-width: 700px) {
+    .controls {
+      flex-direction: column;
+    }
+    .filters {
+      margin-top: 10px;
+    }
+}
+
+@media screen and (max-width: 540px) {
+    .filters {
+      flex-direction: column;
+    }
+    .filters input {
+      width: 100%;
+    }
 }
 
 .controls select {
@@ -486,6 +607,7 @@ textarea {
     gap: 1.5rem;
 }
 
+/* Стили таблицы для отделов */
 .department-name {
     position: relative;
     cursor: help;
@@ -507,3 +629,4 @@ textarea {
     font-weight: normal;
     white-space: normal;
 }
+

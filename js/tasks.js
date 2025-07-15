@@ -36,7 +36,7 @@ async function loadUserInfo() {
     try {
         const user = await fetchWithAuth('/api/users/me');
         console.log(user)
-        document.getElementById('username-display').textContent = user.fullName;
+        document.getElementById('username-display').textContent = user.username;
         return user;
     } catch (error) {
         console.error('Ошибка при загрузке информации о пользователе:', error);
@@ -92,31 +92,33 @@ async function renderTasksTable(tasks) {
         tr.innerHTML = `
             <td>${task.id}</td>
             <td>${task.title}</td>
-            <td><span class="status-badge ${task.status.toLowerCase()}">${getStatusText(task.status)}</span></td>
+            <td class="for-hide"><span class="status-badge ${task.status.toLowerCase()}">${getStatusText(task.status)}</span></td>
             <td><span class="priority-badge ${task.priority.toLowerCase()}">${task.priority}</span></td>
             <td>${task.assignee.fullName}</td>
-            <td>${task.deadline ? new Date(task.deadline).toLocaleString() : 'Нет'}</td>
+            <td class="for-hide">${task.deadline ? new Date(task.deadline).toLocaleString() : 'Нет'}</td>
         `;
         
         if (user.role === "ROLE_MANAGER") {
             tr.innerHTML += `
             <td>
-                <button class="view-btn" data-id="${task.id}">Просмотр</button>
-                <button class="edit-btn" data-id="${task.id}"><i class="fas fa-edit"></i></button>
-                <button class="delete-btn" data-id="${task.id}"><i class="fas fa-trash"></i></button>
+                <div>
+                    <button class="view-btn" data-id="${task.id}">👁</button>
+                    <button class="edit-btn" data-id="${task.id}">&#9998</button>
+                    <button class="delete-btn" data-id="${task.id}"><b>&#10005</b></button>
+                </div>
             </td>
         `
         } else if (user.role === "ROLE_EMPLOYEE") {
             tr.innerHTML += `
             <td>
-                <button class="view-btn" data-id="${task.id}">Просмотр</button>
-                <button class="change-status-btn" data-id="${task.id}">Статус</button>
+                <button class="view-btn" data-id="${task.id}">👁</button>
+                <button class="change-status-btn" data-id="${task.id}">☑</button>
             </td>
         `
         } else {
             tr.innerHTML += `
             <td>
-                <button class="view-btn" data-id="${task.id}">Просмотр</button>
+                <button class="view-btn" data-id="${task.id}">👁</button>
             </td>
         `
         }
@@ -496,7 +498,7 @@ async function addComment() {
                 <div class="comment-author">${comment.author.fullName}</div>
                 <div class="comment-date">${new Date(comment.createdAt).toLocaleString()}</div>
                 <div class="comment-text">${comment.text}</div>
-                <button class="delete-comment-btn" data-id="${comment.id}">Удалить</button>
+                <button class="delete-comment-btn" data-id="${comment.id}"><i class="fas fa-trash"></i></button>
             `;
             commentsList.appendChild(commentDiv);
         });
@@ -534,7 +536,7 @@ async function deleteComment(commentId) {
                     <div class="comment-author">${comment.author.fullName}</div>
                     <div class="comment-date">${new Date(comment.createdAt).toLocaleString()}</div>
                     <div class="comment-text">${comment.text}</div>
-                    <button class="delete-comment-btn" data-id="${comment.id}">Удалить</button>
+                    <button class="delete-comment-btn" data-id="${comment.id}"><i class="fas fa-trash"></i></button>
                 `;
                 commentsList.appendChild(commentDiv);
             });

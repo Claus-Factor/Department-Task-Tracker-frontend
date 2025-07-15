@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             
             // Показываем имя пользователя
             const user = await fetchWithAuth('/api/users/me');
-            document.getElementById('username-display').textContent = user.fullName;
+            document.getElementById('username-display').textContent = user.username;
             
         } catch (error) {
             console.error('Ошибка загрузки данных:', error);

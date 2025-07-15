@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             console.log(user.username);
             
             // Заполняем профиль
-            document.getElementById('username-display').textContent = user.fullName;
+            document.getElementById('username-display').textContent = user.username;
             document.getElementById('user-fullname').textContent = user.fullName;
             document.getElementById('user-role').textContent = getRoleName(user.role);
             document.getElementById('user-email').textContent = user.email || 'не указан';

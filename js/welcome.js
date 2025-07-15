@@ -25,7 +25,7 @@ async function fetchUserInfo() {
         
         if (response.ok) {
             const user = await response.json();
-            document.getElementById('username-display').textContent = user.fullName;
+            document.getElementById('username-display').textContent = user.username;
             console.log("Ok")
         }
     } catch (error) {
